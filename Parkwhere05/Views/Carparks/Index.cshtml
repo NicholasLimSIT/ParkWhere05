@@ -86,7 +86,7 @@
             });
         });
     </script>
-    <span>Location:</span>
+    <strong>Location:</strong>
     @using (Html.BeginForm("Index", "Carparks", FormMethod.Get))
     {
         <input type="text" id="txtPlaces" style="width: 250px" placeholder="Enter a location" />
@@ -98,9 +98,7 @@
     {
         @Html.AntiForgeryToken()
         <br />
-        <br />
-        
-
+        <h3>Carpark Filter : </h3>
         <strong>Type of Parking</strong>
         <div class="form-group">
             <select class="form-control" name="value1">

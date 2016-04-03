@@ -77,8 +77,8 @@ hr {
 }
 
 .well {
-   /*padding-left: 350px;*/
+   padding-left: 150px;
    padding-right: 350px;
-   padding-left: initial;
+   /*padding-left: initial;*/
    height: 200px;
 }
