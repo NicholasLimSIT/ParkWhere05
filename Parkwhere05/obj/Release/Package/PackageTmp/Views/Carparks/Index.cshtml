@@ -86,7 +86,7 @@
             });
         });
     </script>
-    <span>Location:</span>
+    <strong>Location:</strong>
     @using (Html.BeginForm("Index", "Carparks", FormMethod.Get))
     {
         <input type="text" id="txtPlaces" style="width: 250px" placeholder="Enter a location" />
@@ -97,6 +97,8 @@
     @using (Html.BeginForm("Index", "Carparks", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
+        <br />
+        <h3>Carpark Filter : </h3>
         <strong>Type of Parking</strong>
         <div class="form-group">
             <select class="form-control" name="value1">
@@ -135,7 +137,7 @@
         <h3>TOP 5 MOST FREQUENTLY BOOKMARK CARPARK</h3>
     </div>
 
-    @*<table class="table">
+    <table class="table">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.carparkNo)
@@ -158,7 +160,7 @@
                 @Html.ActionLink("Details", "Details", new { id=item.id })
             </td>
         </tr>
-        }*@
+        }
 
     </table>
 

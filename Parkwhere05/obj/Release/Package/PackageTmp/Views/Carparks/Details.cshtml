@@ -5,16 +5,14 @@
 }
 <div id="wellHomePage">
     <br />
-    <br />
-    <br />
 
     <h2>Details</h2>
 
     <div>
         <h4>Carpark</h4>
         
-        @Html.ActionLink("Bookmark this carpark!", "../Bookmarks/Create", new { carparkId = Model.id, address = Model.address })
-        @Html.ActionLink("Save this carpark!", "../ParkingHistories/Create", new { carparkId = Model.id, address = Model.address })
+        @Html.ActionLink("Bookmark this carpark!", "../Bookmarks/Create", new { carparkId = Model.id, address = Model.address }, new { @class = "btn btn-info"} )
+        @Html.ActionLink("Save this carpark!", "../ParkingHistories/Create", new { carparkId = Model.id, address = Model.address }, new { @class = "btn btn-info" })
 
 
         <hr />
@@ -34,23 +32,6 @@
             <dd>
                 @Html.DisplayFor(model => model.address)
             </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.x_coord)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.x_coord)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.y_coord)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.y_coord)
-            </dd>
-
             <dt>
                 @Html.DisplayNameFor(model => model.carparkType)
             </dt>
@@ -129,11 +110,10 @@
     function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         var locations = @Html.Raw(Json.Encode(ViewBag.Corr));
         var currentlocations = @Html.Raw(Json.Encode(ViewBag.CurrentCor));
-       //window.alert('lat ' + locations[0][0]+'lng'+locations[0][1]);
-       var lat =parseFloat(locations[0][0]);
-       var lng =parseFloat(locations[0][1]);
-       var currlat =parseFloat(currentlocations[0][0]);
-       var currlng =parseFloat(currentlocations[0][1]);
+        var lat =parseFloat(locations[0][0]);
+        var lng =parseFloat(locations[0][1]);
+        var currlat =parseFloat(currentlocations[0][0]);
+        var currlng =parseFloat(currentlocations[0][1]);
         var selectedMode = document.getElementById('mode').value;
         directionsService.route({
             origin: { lat: currlat, lng: currlng },  // current lat lng

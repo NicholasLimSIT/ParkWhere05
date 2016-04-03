@@ -65,11 +65,20 @@ body {
 
 h2,h3{
           font-family: 'Century Gothic';
-          color: #ff0000;
+          color:darkslategrey;
+          font-weight: bolder;
+          text-transform: uppercase;
 
 }
 
 hr {
     border-color: black;
     padding-left: -30px;
+}
+
+.well {
+   padding-left: 150px;
+   padding-right: 350px;
+   /*padding-left: initial;*/
+   height: 200px;
 }
