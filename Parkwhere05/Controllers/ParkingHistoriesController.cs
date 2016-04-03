@@ -35,12 +35,17 @@ namespace Parkwhere05.Controllers
                 userParkingHistory = userParkingHistory.Where(ParkingHistory => ParkingHistory.username == User.Identity.Name);
                 return View(userParkingHistory.OrderByDescending(ParkingHistory => ParkingHistory.date));
             }
+            //var parkingHistories = db.ParkingHistories.Include(p => p.Carpark);
+            //return View(parkingHistories.ToList());
         }
+
+        
 
         // GET: ParkingHistories/Create
         public ActionResult Create(int carparkId, String address)
         {
             ParkingHistory parkinghistory = new ParkingHistory();
+            //ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo");
             ViewBag.address = address;
             parkinghistory.username = User.Identity.Name;
             parkinghistory.date = DateTime.Now;
@@ -77,6 +82,7 @@ namespace Parkwhere05.Controllers
             {
                 return HttpNotFound();
             }
+            //ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", parkingHistory.carparkId);
             ViewBag.address = address;
             return View(parkingHistory);
         }

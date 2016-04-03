@@ -27,7 +27,6 @@ namespace Parkwhere05.DAL
         {
             db.SaveChanges();
         }
-
         public void Update(ParkingHistory obj)
         {
             db.Entry(obj).State = EntityState.Modified;

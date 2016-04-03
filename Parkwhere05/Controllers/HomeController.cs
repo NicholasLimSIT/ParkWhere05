@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using Parkwhere05.Services;
 
@@ -30,30 +31,34 @@ namespace Parkwhere05.Controllers
                 ViewBag.Weather = "Retriving weather in progress...";
             }
         }
-
         public ActionResult Index()
         {
+            
             return View();
         }
 
         public ActionResult About()
         {
+          
+            
             return View();
         }
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
             return View();
         }
 
-        public void SaveViewBag(string Lat, string Lng)
+        public void SaveViewBag(String Lat, String Lng)
         {
             CurrentCorrList = new List<string[]>();
             string[] listString = new string[2];
             listString[0] = Lat;
             listString[1] = Lng;
             CurrentCorrList.Add(listString);
+           
         }
     }
 }

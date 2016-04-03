@@ -13,19 +13,14 @@ namespace Parkwhere05.Controllers
             dataGateway = new PetrolStationGateway();
         }
 
-        public override ActionResult Index(int? id)
-        {
-            ViewBag.List = ((PetrolStationGateway)dataGateway).GetAllPetrolStation();
-            return View();
-        }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Index(string addResults)
         {
+
             ViewBag.List = ((PetrolStationGateway)dataGateway).searchPetrolStation(addResults);
             return View();
         }
-
         public override ActionResult Details(int? id)
         {
             if (id == null)

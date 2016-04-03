@@ -1,18 +1,16 @@
-﻿using Newtonsoft.Json;
-
+﻿
 using Parkwhere05.DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
 using Parkwhere05.Services;
+using System;
+using System.Net;
+using System.Web.Mvc;
+
 
 namespace Parkwhere05.Controllers
 {
     public class GeneralController<T> : Controller where T : class
     {
+
         WeatherGateway weatherGateway = new WeatherGateway();
         GetMyAreaGateway getMyAddressGateway = new GetMyAreaGateway();
         public String currentForecast;
@@ -37,12 +35,13 @@ namespace Parkwhere05.Controllers
                 ViewBag.Weather = "Error retriving weather forecast. Please try again.";
             }
         }
-
+    
         public ActionResult currentlat(float coordinates)
         {
             ViewData.Model = coordinates;
             return View();
         }
+
 
         // GET: General
         virtual public ActionResult Index(int? id)

@@ -17,11 +17,13 @@ namespace Parkwhere05.Controllers
         {
             dataGateway = new BookmarkGateway();
         }
+
         
         [Authorize]
         // GET: Bookmarks/Create
         public ActionResult Create(int carparkId, String address)
         {
+            
             Bookmark bookmark = new Bookmark();
             bookmark.username = User.Identity.Name;
             bookmark.date = DateTime.Now;
@@ -42,7 +44,9 @@ namespace Parkwhere05.Controllers
                 db.Bookmarks.Add(bookmark);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+                
             }
+       
             return View(bookmark);
         }
 
@@ -58,6 +62,7 @@ namespace Parkwhere05.Controllers
             {
                 return HttpNotFound();
             }
+            //ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", bookmark.carparkId);
             ViewBag.address = address;
             return View(bookmark);
         }
@@ -127,6 +132,7 @@ namespace Parkwhere05.Controllers
                 userBookmark = userBookmark.Where(Bookmark => Bookmark.username == User.Identity.Name);
                 return View(userBookmark);
             }
+
         }
 
        

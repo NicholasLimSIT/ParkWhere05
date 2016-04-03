@@ -28,7 +28,6 @@ namespace Parkwhere05.DAL
         {
             db.SaveChanges();
         }
-
         public void Update(Bookmark obj)
         {
             db.Entry(obj).State = EntityState.Modified;
