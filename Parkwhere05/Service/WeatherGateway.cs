@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Web;
 
 namespace Parkwhere05.Services
 {
@@ -32,13 +30,30 @@ namespace Parkwhere05.Services
                 }
 
                 string[] tokens = content.Split(new[] { '<' + "area name=" + '"', '"' + " forecast=" + '"', '"' + " icon=" + '"' }, StringSplitOptions.None);
+                
                 string myArea = location.ToString();
                 int i = 0;
-                while (!tokens[i].Equals(myArea.ToUpper()))
+                int length = tokens.Count();
+                Boolean isEnd = false;
+                while (!isEnd)
                 {
-                    i++;
+                    if (!tokens[i].Equals(myArea.ToUpper()))
+                    {
+                        i++;
+                        if (i == length)
+                        {
+                            isEnd = true;
+                        }
+                    }
+
+                    else
+                        isEnd = true;
                 }
-                weatherForecast = "My current location: " + tokens[i] + " | Forecast: " + tokens[i + 1];
+
+                if (i == length)
+                    weatherForecast = "Error accessing current location forecast.";
+                else
+                    weatherForecast = "My current location: " + tokens[i] + " | Forecast: " + tokens[i + 1];
             }
             catch (WebException we)
             {
