@@ -1,0 +1,78 @@
+﻿@model Parkwhere05.Models.PetrolStation
+
+
+@{
+    ViewBag.Title = "Details";
+
+}
+
+<h2>Details</h2>
+
+<script>
+    function initMap() {
+
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var directionsService = new google.maps.DirectionsService;
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+            center: { lat: 1.292582, lng: 103.855444 }
+        });
+        directionsDisplay.setMap(map);
+
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
+        document.getElementById('mode').addEventListener('change', function () {
+            calculateAndDisplayRoute(directionsService, directionsDisplay);
+        });
+    }
+
+    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        var locations = @Html.Raw(Json.Encode(ViewBag.Corr));
+        var currentlocations = @Html.Raw(Json.Encode(ViewBag.CurrentCor));
+       //window.alert('lat ' + locations[0][0]+'lng'+locations[0][1]);
+       var lat =parseFloat(locations[0][0]);
+       var lng =parseFloat(locations[0][1]);
+       var currlat =parseFloat(currentlocations[0][0]);
+       var currlng =parseFloat(currentlocations[0][1]); 
+        var selectedMode = document.getElementById('mode').value;
+        directionsService.route({
+            origin: { lat: currlat, lng: currlng },  // current lat lng
+            destination: { lat: lat , lng: lng},//dest
+            // Note that Javascript allows us to access the constant
+            // using square brackets and a string value as its
+            // "property."
+            travelMode: google.maps.TravelMode[selectedMode]
+        }, function (response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    }
+
+    window.onload = initMap;
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=initMap"
+        async defer></script>
+
+<div class="well" id="wellHomePage">
+    <div id="floating-panel">
+        <b>Mode of Travel: </b>
+        <select id="mode">
+            <option value="DRIVING">Driving</option>
+            <option value="WALKING">Walking</option>
+            <option value="BICYCLING">Bicycling</option>
+            <option value="TRANSIT">Transit</option>
+        </select>
+    </div>
+    <div>
+        <div id="map" style="height: 450px;"></div>
+    </div>
+</div>
+
+
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

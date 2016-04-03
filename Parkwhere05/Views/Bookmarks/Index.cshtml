@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Parkwhere05.Models.Bookmark>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id="wellHomePage">
+    <br />
+    <br />
+    <br />
+    <h2>Bookmark Index</h2>
+    <!--    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>-->
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Carpark.carparkNo)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Carpark.address)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Carpark.carparkNo)
+         
+                                  
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.Carpark.address)</td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.BookmarkId, address = item.Carpark.address }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.BookmarkId, address = item.Carpark.address}) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.BookmarkId })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

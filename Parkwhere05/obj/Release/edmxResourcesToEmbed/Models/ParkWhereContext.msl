@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Parkwhere05_dbModelStoreContainer" CdmEntityContainer="Parkwhere05_dbEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="Parkwhere05_dbModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="Parkwhere05_dbModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="Parkwhere05_dbModel.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="Parkwhere05_dbModel.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="Parkwhere05_dbModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookmarks">
+      <EntityTypeMapping TypeName="Parkwhere05_dbModel.Bookmark">
+        <MappingFragment StoreEntitySet="Bookmarks">
+          <ScalarProperty Name="BookmarkId" ColumnName="BookmarkId" />
+          <ScalarProperty Name="carparkId" ColumnName="carparkId" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="username" ColumnName="username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carparks">
+      <EntityTypeMapping TypeName="Parkwhere05_dbModel.Carpark">
+        <MappingFragment StoreEntitySet="Carparks">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="carparkNo" ColumnName="carparkNo" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="x_coord" ColumnName="x_coord" />
+          <ScalarProperty Name="y_coord" ColumnName="y_coord" />
+          <ScalarProperty Name="carparkType" ColumnName="carparkType" />
+          <ScalarProperty Name="typeOfparking" ColumnName="typeOfparking" />
+          <ScalarProperty Name="shortTermparking" ColumnName="shortTermparking" />
+          <ScalarProperty Name="freeParking" ColumnName="freeParking" />
+          <ScalarProperty Name="nightParking" ColumnName="nightParking" />
+          <ScalarProperty Name="parkAndrideScheme" ColumnName="parkAndrideScheme" />
+          <ScalarProperty Name="adhocParking" ColumnName="adhocParking" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParkingHistories">
+      <EntityTypeMapping TypeName="Parkwhere05_dbModel.ParkingHistory">
+        <MappingFragment StoreEntitySet="ParkingHistory">
+          <ScalarProperty Name="parkingHistoryId" ColumnName="parkingHistoryId" />
+          <ScalarProperty Name="carparkId" ColumnName="carparkId" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PetrolStations">
+      <EntityTypeMapping TypeName="Parkwhere05_dbModel.PetrolStation">
+        <MappingFragment StoreEntitySet="PetrolStation">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="petrolStationName" ColumnName="petrolStationName" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="Parkwhere05_dbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

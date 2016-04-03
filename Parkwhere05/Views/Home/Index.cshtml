@@ -35,8 +35,8 @@
                            
                     }
                     //xmlHttp.open("GET", "http://localhost:51999/Home/SaveViewBag?Lat=" + lat + "&Lng=" + lng, false);
-                    //xmlHttp.open("GET", "http://localhost:55582/Home/SaveViewBag?Lat=" + lat + "&Lng=" + lng, false);
-                    xmlHttp.open("GET", "http://parkwhere05.azurewebsites.net/Home/SaveViewBag?Lat=" + lat + "&Lng=" + lng, false);
+                    xmlHttp.open("GET", "http://localhost:55582/Home/SaveViewBag?Lat=" + lat + "&Lng=" + lng, false);
+                    //xmlHttp.open("GET", "http://parkwhere05.azurewebsites.net/Home/SaveViewBag?Lat=" + lat + "&Lng=" + lng, false);
                     xmlHttp.send(null);
                         map.setCenter(pos);
                 });

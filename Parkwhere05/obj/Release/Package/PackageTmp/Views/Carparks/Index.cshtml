@@ -1,0 +1,167 @@
+﻿@model IEnumerable<Parkwhere05.Models.Carpark>
+
+@{
+    ViewBag.Title = "Index";
+    
+}
+@Styles.Render("~/Content/css")
+
+<div class="well" id="wellHomePage">
+    <h2>Search</h2>
+    <p>@ViewBag.Lat</p>
+    <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+
+    @section scripts {
+
+        <section class="scripts">
+            <script type="text/javascript">
+        var map = new google.maps.Map(document.getElementById('map_canvas'), {
+            zoom: 11,
+            center: new google.maps.LatLng(1.3485232,103.8208814),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var infowindow = new google.maps.InfoWindow();
+        var marker, i;
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+
+                var marker = new google.maps.Marker({
+                    position: pos,
+                    map: map,
+                    title: 'Your current location!',
+                    icon: 'https://cdn0.iconfinder.com/data/icons/huge-business-icons/40/Car.png'
+                });
+                map.setCenter(pos);
+            }, function() {
+                handleLocationError(true, infoWindow, map.getCenter());
+            });
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+        }
+
+        var locations = @Html.Raw(Json.Encode(ViewBag.List));
+
+            if(locations!=null)
+            {
+                for (i = 0; i < locations.length; i++) {
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(locations[i][5], locations[i][6]),
+                        map: map
+                    });
+
+                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                        return function() {
+                            infowindow.setContent("Carpark Address :<br />" + locations[i][2] + "<br />" + '<a href="/Carparks/Details/' + locations[i][0] + '">Carpark Details</a>');
+                            infowindow.open(map, marker);
+                        }
+                    })(marker, i));
+                }
+            }
+            </script>
+        </section>
+    }
+
+
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+    <script type="text/javascript">
+        google.maps.event.addDomListener(window, 'load', function () {
+            var places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
+            google.maps.event.addListener(places, 'place_changed', function () {
+                var place = places.getPlace();
+                var address = place.formatted_address;
+                var latitude = place.geometry.location.lat();
+                var longitude = place.geometry.location.lng();
+                var mesg = "Address: " + address;
+                mesg += "\nLatitude: " + latitude;
+                mesg += "\nLongitude: " + longitude;
+                document.getElementById("addResults").value = address;
+            });
+        });
+    </script>
+    <span>Location:</span>
+    @using (Html.BeginForm("Index", "Carparks", FormMethod.Get))
+    {
+        <input type="text" id="txtPlaces" style="width: 250px" placeholder="Enter a location" />
+        <input type="hidden" name="addResults" id="addResults" style="width: 250px" />
+        <input type="submit" value="Search" />
+    }
+
+    @using (Html.BeginForm("Index", "Carparks", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <strong>Type of Parking</strong>
+        <div class="form-group">
+            <select class="form-control" name="value1">
+                <option>
+                    ELECTRONIC PARKING
+                </option>
+                <option>
+                    COUPON PARKING
+                </option>
+            </select>
+        </div>
+        <strong>CarPark Type</strong>
+        <div class="form-group">
+            <select class="form-control" name="value2">
+                <option>
+                    SURFACE CAR PARK
+                </option>
+                <option>
+                    MULTI-STOREY CAR PARK
+                </option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-default">
+            Submit
+        </button>
+
+    }
+
+   
+    <div>
+        <div id="map_canvas" style="height: 450px;"></div>
+    </div>
+
+<br />
+    <div>
+        <h3>TOP 5 MOST FREQUENTLY BOOKMARK CARPARK</h3>
+    </div>
+
+    @*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.carparkNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.carparkNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id=item.id })
+            </td>
+        </tr>
+        }*@
+
+    </table>
+
+
+</div>
+

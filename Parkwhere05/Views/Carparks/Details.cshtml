@@ -11,8 +11,8 @@
     <div>
         <h4>Carpark</h4>
         
-        @Html.ActionLink("Bookmark this carpark!", "../Bookmarks/Create", new { carparkId = Model.id, address = Model.address })
-        @Html.ActionLink("Save this carpark!", "../ParkingHistories/Create", new { carparkId = Model.id, address = Model.address })
+        @Html.ActionLink("Bookmark this carpark!", "../Bookmarks/Create", new { carparkId = Model.id, address = Model.address }, new { @class = "btn btn-info"} )
+        @Html.ActionLink("Save this carpark!", "../ParkingHistories/Create", new { carparkId = Model.id, address = Model.address }, new { @class = "btn btn-info" })
 
 
         <hr />
